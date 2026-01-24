@@ -21,6 +21,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import org.springframework.beans.factory.support.RootBeanDefinition;
@@ -50,6 +51,11 @@ public class DelegatingFilterProxyRegistrationBeanTests
 
 	private GenericWebApplicationContext applicationContext = new GenericWebApplicationContext(
 			new MockServletContext());
+
+	@Before
+	public void setup() {
+		mockFilterInitialized.remove();
+	}
 
 	@Test
 	public void targetBeanNameMustNotBeNull() {
